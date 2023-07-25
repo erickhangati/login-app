@@ -22,7 +22,7 @@ const Reset = () => {
     <div className='container mx-auto'>
       <Toaster position='top-center' reverseOrder={false} />
       <div className='flex justify-center items-center min-h-screen'>
-        <div className={usernameStyles.glass}>
+        <div className={usernameStyles.glass} style={{ width: '50%' }}>
           <div className='title flex flex-col items-center'>
             <h1 className='text-2xl font-bold'>Reset</h1>
             <span className='py-4 text-xl w-2/3 text-center text-gray-500'>
