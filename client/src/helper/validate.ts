@@ -19,6 +19,14 @@ interface RegisterData {
   password?: string;
 }
 
+interface ProfileData {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  mobile?: string;
+  address?: string;
+}
+
 /** Validate login page username */
 export const usernameValidate = (values: UsernameData) => {
   const errors = usernameVerify({}, values);
@@ -37,9 +45,15 @@ export const resetPasswordValidate = (values: ResetPasswordData) => {
   return errors;
 };
 
-/** Validate password page username */
+/** Validate register page */
 export const registerValidate = (values: RegisterData) => {
   const errors = registerVerify({}, values);
+  return errors;
+};
+
+/** Validate profile page */
+export const profileValidate = (values: ProfileData) => {
+  const errors = profileVerify({}, values);
   return errors;
 };
 
@@ -88,10 +102,31 @@ const resetPasswordVerify = (
 const registerVerify = (error: RegisterData = {}, values: RegisterData) => {
   if (!values.email) {
     error.email = toast.error('Email required');
+  } else if (
+    values.email.includes(' ') ||
+    // eslint-disable-next-line no-useless-escape
+    !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)
+  ) {
+    error.email = toast.error('Invalid email');
   } else if (!values.username) {
     error.username = toast.error('Username required');
   } else if (!values.password) {
     error.password = toast.error('Password required');
+  }
+
+  return error;
+};
+
+/** Validate username */
+const profileVerify = (error: ProfileData = {}, values: ProfileData) => {
+  if (!values.email) {
+    error.email = toast.error('Email required');
+  } else if (
+    values.email.includes(' ') ||
+    // eslint-disable-next-line no-useless-escape
+    !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(values.email)
+  ) {
+    error.email = toast.error('Invalid email');
   }
 
   return error;
