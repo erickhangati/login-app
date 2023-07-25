@@ -9,7 +9,7 @@ import profile from '../assets/profile.png';
 const Username = () => {
   const formik = useFormik({
     initialValues: {
-      username: '',
+      username: 'ekhangati',
     },
     validate: usernameValidate,
     validateOnBlur: false,

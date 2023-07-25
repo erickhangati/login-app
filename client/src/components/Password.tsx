@@ -9,7 +9,7 @@ import profile from '../assets/profile.png';
 const Password = () => {
   const formik = useFormik({
     initialValues: {
-      password: '',
+      password: 'KXj5YsEDF@dRG9',
     },
     validate: passwordValidate,
     validateOnBlur: false,
@@ -41,12 +41,12 @@ const Password = () => {
             <div className='textbox flex flex-col items-center gap-6'>
               <input
                 className={usernameStyles.textbox}
-                type='text'
+                type='password'
                 placeholder='Password'
                 {...formik.getFieldProps('password')}
               />
               <button className={usernameStyles.btn} type='submit'>
-                Let's Go
+                Sign Up
               </button>
             </div>
             <div className='text-center py-4'>
