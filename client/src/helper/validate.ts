@@ -13,6 +13,12 @@ interface ResetPasswordData {
   confirm_pwd?: string;
 }
 
+interface RegisterData {
+  email?: string;
+  username?: string;
+  password?: string;
+}
+
 /** Validate login page username */
 export const usernameValidate = (values: UsernameData) => {
   const errors = usernameVerify({}, values);
@@ -25,9 +31,15 @@ export const passwordValidate = (values: PasswordData) => {
   return errors;
 };
 
-/** Validate password page username */
+/** Validate reset password page username */
 export const resetPasswordValidate = (values: ResetPasswordData) => {
   const errors = resetPasswordVerify({}, values);
+  return errors;
+};
+
+/** Validate password page username */
+export const registerValidate = (values: RegisterData) => {
+  const errors = registerVerify({}, values);
   return errors;
 };
 
@@ -60,13 +72,26 @@ const usernameVerify = (error: UsernameData = {}, values: UsernameData) => {
   return error;
 };
 
-/** Validate username */
+/** Validate reset password */
 const resetPasswordVerify = (
   error: ResetPasswordData = {},
   values: ResetPasswordData
 ) => {
   if (values.password !== values.confirm_pwd) {
     error.confirm_pwd = toast.error('Password not match');
+  }
+
+  return error;
+};
+
+/** Validate username */
+const registerVerify = (error: RegisterData = {}, values: RegisterData) => {
+  if (!values.email) {
+    error.email = toast.error('Email required');
+  } else if (!values.username) {
+    error.username = toast.error('Username required');
+  } else if (!values.password) {
+    error.password = toast.error('Password required');
   }
 
   return error;
