@@ -12,12 +12,12 @@ import Profile from './components/Profile';
 import Recovery from './components/Recovery';
 import Register from './components/Register';
 import Reset from './components/Reset';
-import UserName from './components/UserName';
+import Username from './components/Username';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Root />}>
-      <Route index element={<UserName />} />
+      <Route index element={<Username />} />
       <Route path='/register' element={<Register />} />
       <Route path='/password' element={<Password />} />
       <Route path='/profile' element={<Profile />} />
