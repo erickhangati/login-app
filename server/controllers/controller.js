@@ -1,3 +1,5 @@
+const UserModel = require('../model/User.model');
+
 /** POST: http://localhost:8080/api/register 
  * @param : {
   "username" : "example123",
@@ -11,7 +13,20 @@
 }
 */
 exports.register = async (req, res) => {
-  res.json('Register route');
+  try {
+    const { username, password, profile, email } = req.body;
+
+    res
+      .status(200)
+      .json({
+        status: 'success',
+        data: { username, password, profile, email },
+      });
+
+    // Check existing user
+  } catch (error) {
+    res.status(500).send(error);
+  }
 };
 
 /** POST: http://localhost:8080/api/login 

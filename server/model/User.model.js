@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-exports.UserSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     required: [true, 'Please provide unique Username'],
